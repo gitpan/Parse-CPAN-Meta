@@ -2,6 +2,16 @@
 
 # Testing of common META.yml examples
 
+BEGIN {
+	if( $ENV{PERL_CORE} ) {
+		chdir 't';
+		@INC = ('../lib', 'lib');
+	}
+	else {
+		unshift @INC, 't/lib/';
+	}
+}
+
 use strict;
 BEGIN {
 	$|  = 1;
@@ -9,7 +19,7 @@ BEGIN {
 }
 
 use File::Spec::Functions ':ALL';
-use t::lib::Test;
+use Parse::CPAN::Meta::Test;
 use Test::More tests(8, 2);
 
 
@@ -255,7 +265,7 @@ END_YAML
 SCOPE: {
 	my $content = load_ok(
 		'Template-Provider-Unicode-Japanese.yml',
-		catfile( 't', 'data', 'Template-Provider-Unicode-Japanese.yml' ),
+		catfile( test_data_directory(), 'Template-Provider-Unicode-Japanese.yml' ),
 		100
 	);
 	yaml_ok(
@@ -289,7 +299,7 @@ SCOPE: {
 SCOPE: {
 	my $content = load_ok(
 		'HTML-WebDAO.yml',
-		catfile( 't', 'data', 'HTML-WebDAO.yml' ),
+		catfile( test_data_directory(), 'HTML-WebDAO.yml' ),
 		100
 	);
 	yaml_ok(

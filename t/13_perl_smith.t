@@ -2,6 +2,16 @@
 
 # Testing of common META.yml examples
 
+BEGIN {
+	if( $ENV{PERL_CORE} ) {
+		chdir 't';
+		@INC = ('../lib', 'lib');
+	}
+	else {
+		unshift @INC, 't/lib/';
+	}
+}
+
 use strict;
 BEGIN {
 	$|  = 1;
@@ -9,7 +19,7 @@ BEGIN {
 }
 
 use File::Spec::Functions ':ALL';
-use t::lib::Test;
+use Parse::CPAN::Meta::Test;
 use Test::More tests(1, 1);
 
 
@@ -19,7 +29,7 @@ use Test::More tests(1, 1);
 #####################################################################
 # Testing that Perl::Smith config files work
 
-my $vanilla_file = catfile( 't', 'data', 'vanilla.yml' );
+my $vanilla_file = catfile( test_data_directory(), 'vanilla.yml' );
 my $vanilla      = load_ok( 'yanilla.yml', $vanilla_file, 1000 );
 
 yaml_ok(

@@ -2,6 +2,16 @@
 
 # Testing of a known-bad file from an editor
 
+BEGIN {
+	if( $ENV{PERL_CORE} ) {
+		chdir 't';
+		@INC = ('../lib', 'lib');
+	}
+	else {
+		unshift @INC, 't/lib/';
+	}
+}
+
 use strict;
 BEGIN {
 	$|  = 1;
@@ -9,7 +19,7 @@ BEGIN {
 }
 
 use File::Spec::Functions ':ALL';
-use t::lib::Test;
+use Parse::CPAN::Meta::Test;
 # use Test::More skip_all => 'Temporarily ignoring failing test';
 use Test::More tests(1, 1);
 
@@ -20,7 +30,7 @@ use Test::More tests(1, 1);
 #####################################################################
 # Testing that Perl::Smith config files work
 
-my $toolbar_file = catfile( 't', 'data', 'toolbar.yml' );
+my $toolbar_file = catfile( test_data_directory(), 'toolbar.yml' );
 my $toolbar      = load_ok( 'toolbar.yml', $toolbar_file, 100 );
 
 yaml_ok(

@@ -1,11 +1,11 @@
 --- #YAML:1.0
 name:                Parse-CPAN-Meta
-version:             0.03
+version:             0.04
 abstract:            Parse META.yml and other similar CPAN metadata files
 license:             perl
 author:              
     - Adam Kennedy <adamk@cpan.org>
-generated_by:        ExtUtils::MakeMaker version 6.42
+generated_by:        ExtUtils::MakeMaker version 6.44
 distribution_type:   module
 requires:     
     File::Spec:                    0.80

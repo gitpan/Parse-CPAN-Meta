@@ -2,6 +2,16 @@
 
 # Testing of common META.yml examples
 
+BEGIN {
+	if( $ENV{PERL_CORE} ) {
+		chdir 't';
+		@INC = ('../lib', 'lib');
+	}
+	else {
+		unshift @INC, 't/lib/';
+	}
+}
+
 use strict;
 BEGIN {
 	$|  = 1;
@@ -9,8 +19,8 @@ BEGIN {
 }
 
 use File::Spec::Functions ':ALL';
-use t::lib::Test;
-use Test::More tests(19);
+use Parse::CPAN::Meta::Test;
+use Test::More tests(20);
 
 
 
@@ -279,4 +289,23 @@ foo: "foo\\\n\tbar"
 END_YAML
 	[ { foo => "foo\\\n\tbar" } ],
 	'special characters',
+);
+
+
+
+
+
+
+######################################################################
+# Non-Indenting Sub-List
+
+yaml_ok(
+	<<'END_YAML',
+---
+foo:
+- list
+bar: value
+END_YAML
+	[ { foo => [ 'list' ], bar => 'value' } ],
+	'Non-indenting sub-list',
 );

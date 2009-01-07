@@ -1,14 +1,23 @@
-package t::lib::Test;
+package Parse::CPAN::Meta::Test;
 
 use strict;
 use Test::More ();
 use Parse::CPAN::Meta;
+use File::Spec;
 
 use vars qw{@ISA @EXPORT};
 BEGIN {
 	require Exporter;
 	@ISA    = qw{ Exporter };
-	@EXPORT = qw{ tests  yaml_ok  slurp  load_ok };
+	@EXPORT = qw{ tests  yaml_ok  slurp  load_ok  test_data_directory };
+}
+
+sub test_data_directory {
+	return(
+		$ENV{PERL_CORE}
+		? File::Spec->catdir(File::Spec->updir, qw(lib Parse CPAN Meta t data))
+		: File::Spec->catdir(qw(t data))
+	);
 }
 
 # 22 tests per call to yaml_ok
@@ -57,7 +66,7 @@ sub load_ok {
 	my $name = shift;
 	my $file = shift;
 	my $size = shift;
-	Test::More::ok( -f $file, "Found $name" );
+	Test::More::ok( -f $file, "Found $name" ) or Test::More::diag("Searched at '$file'");
 	Test::More::ok( -r $file, "Can read $name" );
 	my $content = slurp( $file );
 	Test::More::ok( (defined $content and ! ref $content), "Loaded $name" );
