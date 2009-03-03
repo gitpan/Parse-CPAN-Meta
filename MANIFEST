@@ -18,6 +18,7 @@ t/data/multibyte.yml
 t/data/sample.yml
 t/data/Template-Provider-Unicode-Japanese.yml
 t/data/toolbar.yml
+t/data/utf_16_le_bom.yml
 t/data/vanilla.yml
 t/lib/Parse/CPAN/Meta/Test.pm
 META.yml                                 Module meta-data (added by MakeMaker)
