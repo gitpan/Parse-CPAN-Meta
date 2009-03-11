@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:                Parse-CPAN-Meta
-version:             0.04_01
+version:             0.05
 abstract:            Parse META.yml and other similar CPAN metadata files
 license:             perl
 author:              
