@@ -1,12 +1,25 @@
-# http://module-build.sourceforge.net/META-spec.html
-#XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
-name:         Parse-CPAN-Meta
-version:      1.40
-version_from: 
-installdirs:  site
+--- #YAML:1.0
+name:               Parse-CPAN-Meta
+version:            1.41_01
+abstract:           Parse META.yml and other similar CPAN metadata files
+author:
+    - Adam Kennedy <adamk@cpan.org>
+license:            perl
+distribution_type:  module
+configure_requires:
+    ExtUtils::MakeMaker:  0
+build_requires:
+    ExtUtils::MakeMaker:  0
 requires:
-    File::Spec:                    0.80
-    Test::More:                    0.47
-
-distribution_type: module
-generated_by: ExtUtils::MakeMaker version 6.30_01
+    File::Spec:  0.80
+    JSON::PP:    2
+    Test::More:  0.47
+    YAML::Tiny:  1.44
+no_index:
+    directory:
+        - t
+        - inc
+generated_by:       ExtUtils::MakeMaker version 6.56
+meta-spec:
+    url:      http://module-build.sourceforge.net/META-spec-v1.4.html
+    version:  1.4
