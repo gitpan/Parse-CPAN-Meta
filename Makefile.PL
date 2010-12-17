@@ -1,7 +1,7 @@
 use strict;
 BEGIN {
 	require 5.003_96;
-	$main::VERSION = '1.41_01';
+	$main::VERSION = '1.41_02';
 }
 use ExtUtils::MakeMaker;
 
@@ -13,7 +13,7 @@ WriteMakefile(
 		'JSON::PP'   => 2,
 		'File::Spec' => '0.80',
 		'Test::More' => '0.47',
-		'YAML::Tiny' => '1.44',
+		'CPAN::Meta::YAML' => '0.002',
 	},
 	($] >= 5.005 ? (
 		AUTHOR  => 'Adam Kennedy <adamk@cpan.org>',
