@@ -5,10 +5,11 @@ use ExtUtils::MakeMaker;
 WriteMakefile(
 	NAME      => 'Parse::CPAN::Meta',
 	PREREQ_PM => {
-		'JSON::PP'   => 2,
 		'File::Spec' => '0.80',
 		'Test::More' => '0.47',
+		'JSON::PP'   => 2.27103,
 		'CPAN::Meta::YAML' => '0.002',
+		'Module::Load::Conditional' => '0.26',
 	},
 	($] >= 5.005 ? (
 		AUTHOR  => 'Adam Kennedy <adamk@cpan.org>',
@@ -18,6 +19,6 @@ WriteMakefile(
 	($ExtUtils::MakeMaker::VERSION ge '6.30_00' ? (
 		LICENSE => 'perl',
 	) : ()),
-	(INSTALLDIRS => $] >= 5.010001 ? 'perl' : 'site'),
+	(INSTALLDIRS => ($] ge '5.010001' && $] lt '5.012') ? 'perl' : 'site'),
 );
 

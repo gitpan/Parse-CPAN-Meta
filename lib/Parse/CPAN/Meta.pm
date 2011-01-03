@@ -2,6 +2,7 @@ package Parse::CPAN::Meta;
 
 use strict;
 use Carp 'croak';
+use Module::Load::Conditional qw/can_load/;
 
 # UTF Support?
 sub HAVE_UTF8 () { $] >= 5.007003 }
@@ -17,7 +18,7 @@ BEGIN {
 	# Class structure
 	require 5.004;
 	require Exporter;
-	$Parse::CPAN::Meta::VERSION   = '1.41_03';
+	$Parse::CPAN::Meta::VERSION   = '1.41_04';
 	@Parse::CPAN::Meta::ISA       = qw{ Exporter      };
 	@Parse::CPAN::Meta::EXPORT_OK = qw{ Load LoadFile };
 }
@@ -36,29 +37,51 @@ sub load_file {
   croak("file type cannot be determined by filename");
 }
 
-my $yaml_version; # cache the check
 sub load_yaml_string {
   my ($class, $string) = @_;
-  require CPAN::Meta::YAML;
-  $yaml_version ||= CPAN::Meta::YAML->VERSION(0.002);
-  my $yaml = CPAN::Meta::YAML->read_string($string)
-    or die CPAN::Meta::YAML->errstr;
-  return $yaml->[-1] || {};
+  my $backend = _choose_yaml_backend();
+  my $data = eval { no strict 'refs'; &{"$backend\::Load"}($string) };
+  if ( $@ ) { 
+    croak $backend->can('errstr') ? $backend->errstr : $@
+  }
+  return $data || {}; # in case document was valid but empty
 }
 
-my $json_version; # cache the check
 sub load_json_string {
   my ($class, $string) = @_;
-  my $json_class;
-  if ( defined $INC{'JSON.pm'} ) {
-    $json_class = 'JSON';
+  return _choose_json_backend()->new->decode($string);
+}
+
+sub _choose_yaml_backend {
+  local $Module::Load::Conditional::CHECK_INC_HASH = 1;
+  if (! defined $ENV{PERL_YAML_BACKEND} ) {
+    can_load( modules => {'CPAN::Meta::YAML' => 0.002}, verbose => 0 )
+      or croak "CPAN::Meta::YAML 0.002 is not available\n";
+    return "CPAN::Meta::YAML";
   }
   else {
-    require JSON::PP;
-    $json_class = 'JSON::PP';
+    my $backend = $ENV{PERL_YAML_BACKEND};
+    can_load( modules => {$backend => undef}, verbose => 0 )
+      or croak "Could not load PERL_YAML_BACKEND '$backend'\n";
+    $backend->can("Load")
+      or croak "PERL_YAML_BACKEND '$backend' does not implement Load()\n";
+    return $backend;
   }
-  $json_version ||= $json_class->VERSION(2);
-  return $json_class->new->utf8->decode($string);
+}
+
+sub _choose_json_backend {
+  local $Module::Load::Conditional::CHECK_INC_HASH = 1;
+  if (! $ENV{PERL_JSON_BACKEND} or $ENV{PERL_JSON_BACKEND} eq 'JSON::PP') {
+    can_load( modules => {'JSON::PP' => 2.27103}, verbose => 0 )
+      or croak "JSON::PP 2.27103 is not available\n";
+    return 'JSON::PP';
+  }
+  else {
+    can_load( modules => {'JSON' => 2.5}, verbose => 0 )
+      or croak  "JSON 2.5 is required for " .
+                "\$ENV{PERL_JSON_BACKEND} = '$ENV{PERL_JSON_BACKEND}'\n";
+    return "JSON";
+  }
 }
 
 sub _slurp {
@@ -90,7 +113,7 @@ __END__
 
 =head1 NAME
 
-Parse::CPAN::Meta - Parse META.yml and other similar CPAN metadata files
+Parse::CPAN::Meta - Parse META.yml and META.json CPAN metadata files
 
 =head1 SYNOPSIS
 
@@ -119,7 +142,7 @@ Parse::CPAN::Meta - Parse META.yml and other similar CPAN metadata files
 =head1 DESCRIPTION
 
 B<Parse::CPAN::Meta> is a parser for F<META.json> and F<META.yml> files, using
-L<JSON.pm|JSON> and/or L<CPAN::Meta::YAML>.
+L<JSON::PP> and/or L<CPAN::Meta::YAML>.
 
 B<Parse::CPAN::Meta> provides three methods: C<load_file>, C<load_json_string>,
 and C<load_yaml_string>.  These will read and deserialize CPAN metafiles, and
@@ -127,11 +150,12 @@ are described below in detail.
 
 B<Parse::CPAN::Meta> provides a legacy API of only two functions,
 based on the YAML functions of the same name. Wherever possible,
-identical calling semantics are used.
+identical calling semantics are used.  These may only be used with YAML sources.
 
 All error reporting is done with exceptions (die'ing).
 
-Note that META files are expected to be in UTF-8 encoding, only.
+Note that META files are expected to be in UTF-8 encoding, only.  When
+converted string data, it must first be decoded from UTF-8.
 
 =head1 METHODS
 
@@ -142,22 +166,25 @@ Note that META files are expected to be in UTF-8 encoding, only.
   my $metadata_structure = Parse::CPAN::Meta->load_file('META.yml');
 
 This method will read the named file and deserialize it to a data structure,
-determining whether it should be JSON or YAML based on the filename.
+determining whether it should be JSON or YAML based on the filename.  On
+Perl 5.8.1 or later, the file will be read using the ":utf8" IO layer.
 
 =head2 load_yaml_string
 
-  my $metadata_structure = Parse::CPAN::Meta->load_yaml_string( $yaml_string);
+  my $metadata_structure = Parse::CPAN::Meta->load_yaml_string($yaml_string);
 
 This method deserializes the given string of YAML and returns the first
 document in it.  (CPAN metadata files should always have only one document.)
+If the source was UTF-8 encoded, the string must be decoded before calling
+C<load_yaml_string>.
 
 =head2 load_json_string
 
-  my $metadata_structure = Parse::CPAN::Meta->load_json_string( $json_string);
+  my $metadata_structure = Parse::CPAN::Meta->load_json_string($json_string);
 
-This method deserializes the given string of JSON and the result. If the
-L<JSON> module is loaded, it will be used, otherwise, L<JSON::PP> will be
-loaded and used instead.
+This method deserializes the given string of JSON and the result.  
+If the source was UTF-8 encoded, the string must be decoded before calling
+C<load_json_string>.
 
 =head1 FUNCTIONS
 
@@ -177,6 +204,24 @@ structures.
   my @yaml = Parse::CPAN::Meta::LoadFile( 'META.yml' );
 
 Reads the YAML stream from a file instead of a string.
+
+=head1 ENVIRONMENT
+
+=head2 PERL_JSON_BACKEND
+
+By default, L<JSON::PP> will be used for deserializing JSON data. If the
+C<PERL_JSON_BACKEND> environment variable exists, is true and is not
+"JSON::PP", then the L<JSON> module (version 2.5 or greater) will be loaded and
+used to interpret C<PERL_JSON_BACKEND>.  If L<JSON> is not installed or is too
+old, an exception will be thrown.
+
+=head2 PERL_YAML_BACKEND
+
+By default, L<CPAN::Meta::YAML> will be used for deserializing YAML data. If
+the C<PERL_YAML_BACKEND> environment variable is defined, then it is intepreted
+as a module to use for deserialization.  The given module must be installed,
+must load correctly and must implement the C<Load()> function or an exception
+will be thrown.
 
 =head1 SUPPORT
 
