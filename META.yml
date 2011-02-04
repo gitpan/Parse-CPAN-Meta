@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Parse-CPAN-Meta
-version:            1.4200
+version:            1.4400
 abstract:           Parse META.yml and META.json CPAN metadata files
 author:
     - Adam Kennedy <adamk@cpan.org>
