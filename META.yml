@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Parse-CPAN-Meta
-version:            1.4400
+version:            1.4401
 abstract:           Parse META.yml and META.json CPAN metadata files
 author:
     - Adam Kennedy <adamk@cpan.org>
@@ -11,11 +11,10 @@ configure_requires:
 build_requires:
     ExtUtils::MakeMaker:  0
 requires:
-    CPAN::Meta::YAML:     0.002
-    File::Spec:           0.80
-    JSON::PP:             2.27103
-    Module::Load::Conditional:  0.26
-    Test::More:           0.47
+    CPAN::Meta::YAML:  0.002
+    File::Spec:        0.80
+    JSON::PP:          2.27103
+    Test::More:        0.47
 no_index:
     directory:
         - t
