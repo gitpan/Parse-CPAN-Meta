@@ -68,7 +68,7 @@
    "provides" : {
       "Parse::CPAN::Meta" : {
          "file" : "lib/Parse/CPAN/Meta.pm",
-         "version" : "1.4406"
+         "version" : "1.4407"
       }
    },
    "release_status" : "stable",
@@ -76,14 +76,14 @@
       "bugtracker" : {
          "web" : "http://rt.cpan.org/Public/Dist/Display.html?Name=Parse-CPAN-Meta"
       },
-      "homepage" : "https://github.com/dagolden/Parse-CPAN-Meta",
+      "homepage" : "https://github.com/Perl-Toolchain-Gang/Parse-CPAN-Meta",
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/Perl-Toolchain-Gang/Parse-CPAN-Meta.git",
-         "web" : "http://github.com/Perl-Toolchain-Gang/Parse-CPAN-Meta"
+         "url" : "https://github.com/Perl-Toolchain-Gang/Parse-CPAN-Meta.git",
+         "web" : "https://github.com/Perl-Toolchain-Gang/Parse-CPAN-Meta"
       }
    },
-   "version" : "1.4406",
+   "version" : "1.4407",
    "x_authority" : "cpan:ADAMK",
    "x_contributors" : [
       "Joshua ben Jore <jjore@cpan.org>",

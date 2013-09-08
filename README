@@ -2,7 +2,7 @@ NAME
     Parse::CPAN::Meta - Parse META.yml and META.json CPAN metadata files
 
 VERSION
-    version 1.4406
+    version 1.4407
 
 SYNOPSIS
         #############################################
@@ -125,9 +125,9 @@ SUPPORT
     This is open source software. The code repository is available for
     public review and contribution under the terms of the license.
 
-    <http://github.com/Perl-Toolchain-Gang/Parse-CPAN-Meta>
+    <https://github.com/Perl-Toolchain-Gang/Parse-CPAN-Meta>
 
-      git clone git://github.com/Perl-Toolchain-Gang/Parse-CPAN-Meta.git
+      git clone https://github.com/Perl-Toolchain-Gang/Parse-CPAN-Meta.git
 
 AUTHORS
     *   Adam Kennedy <adamk@cpan.org>
