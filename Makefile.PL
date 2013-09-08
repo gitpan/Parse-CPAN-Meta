@@ -10,7 +10,7 @@ use ExtUtils::MakeMaker 6.30;
 
 my %WriteMakefileArgs = (
   "ABSTRACT" => "Parse META.yml and META.json CPAN metadata files",
-  "AUTHOR" => "Adam Kennedy <adamk\@cpan.org>",
+  "AUTHOR" => "Adam Kennedy <adamk\@cpan.org>, David Golden <dagolden\@cpan.org>",
   "BUILD_REQUIRES" => {},
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => "6.30"
@@ -25,21 +25,21 @@ my %WriteMakefileArgs = (
     "Exporter" => 0,
     "File::Spec" => "0.80",
     "JSON::PP" => "2.27200",
-    "Test::More" => "0.47",
     "strict" => 0
   },
   "TEST_REQUIRES" => {
     "ExtUtils::MakeMaker" => 0,
-    "File::Find" => 0,
     "File::Spec" => 0,
     "File::Spec::Functions" => 0,
     "File::Temp" => 0,
+    "IO::Handle" => 0,
+    "IPC::Open3" => 0,
     "List::Util" => 0,
-    "Test::More" => 0,
+    "Test::More" => "0.47",
     "vars" => 0,
     "warnings" => 0
   },
-  "VERSION" => "1.4405",
+  "VERSION" => "1.4406",
   "test" => {
     "TESTS" => "t/*.t"
   }

@@ -14,10 +14,11 @@ my @modules = qw(
   Carp
   Exporter
   ExtUtils::MakeMaker
-  File::Find
   File::Spec
   File::Spec::Functions
   File::Temp
+  IO::Handle
+  IPC::Open3
   JSON::PP
   List::Util
   Test::More

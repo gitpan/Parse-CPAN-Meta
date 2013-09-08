@@ -2,7 +2,7 @@ NAME
     Parse::CPAN::Meta - Parse META.yml and META.json CPAN metadata files
 
 VERSION
-    version 1.4405
+    version 1.4406
 
 SYNOPSIS
         #############################################
@@ -118,7 +118,7 @@ ENVIRONMENT
 SUPPORT
   Bugs / Feature Requests
     Please report any bugs or feature requests through the issue tracker at
-    <https://rt.cpan.org/Public/Dist/Display.html?Name=Parse-CPAN-Meta>. You
+    <http://rt.cpan.org/Public/Dist/Display.html?Name=Parse-CPAN-Meta>. You
     will be notified automatically of any progress on your issue.
 
   Source Code
@@ -129,13 +129,15 @@ SUPPORT
 
       git clone git://github.com/Perl-Toolchain-Gang/Parse-CPAN-Meta.git
 
-AUTHOR
-    Adam Kennedy <adamk@cpan.org>
+AUTHORS
+    *   Adam Kennedy <adamk@cpan.org>
 
-CONTRIBUTORS
     *   David Golden <dagolden@cpan.org>
 
+CONTRIBUTORS
     *   Joshua ben Jore <jjore@cpan.org>
+
+    *   Neil Bowers <neil@bowers.com>
 
     *   Ricardo SIGNES <rjbs@cpan.org>
 

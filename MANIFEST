@@ -6,6 +6,7 @@ META.json
 META.yml
 Makefile.PL
 README
+cpanfile
 dist.ini
 lib/Parse/CPAN/Meta.pm
 perlcritic.rc

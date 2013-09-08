@@ -2,20 +2,22 @@
 abstract: 'Parse META.yml and META.json CPAN metadata files'
 author:
   - 'Adam Kennedy <adamk@cpan.org>'
+  - 'David Golden <dagolden@cpan.org>'
 build_requires:
   ExtUtils::MakeMaker: 0
-  File::Find: 0
   File::Spec: 0
   File::Spec::Functions: 0
   File::Temp: 0
+  IO::Handle: 0
+  IPC::Open3: 0
   List::Util: 0
-  Test::More: 0
+  Test::More: 0.47
   vars: 0
   warnings: 0
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300035, CPAN::Meta::Converter version 2.130880'
+generated_by: 'Dist::Zilla version 4.300038, CPAN::Meta::Converter version 2.132140'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -32,23 +34,23 @@ no_index:
 provides:
   Parse::CPAN::Meta:
     file: lib/Parse/CPAN/Meta.pm
-    version: 1.4405
+    version: 1.4406
 requires:
   CPAN::Meta::YAML: 0.008
   Carp: 0
   Exporter: 0
   File::Spec: 0.80
   JSON::PP: 2.27200
-  Test::More: 0.47
   perl: 5.006
   strict: 0
 resources:
-  bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=Parse-CPAN-Meta
-  homepage: https://metacpan.org/release/Parse-CPAN-Meta
+  bugtracker: http://rt.cpan.org/Public/Dist/Display.html?Name=Parse-CPAN-Meta
+  homepage: https://github.com/dagolden/Parse-CPAN-Meta
   repository: git://github.com/Perl-Toolchain-Gang/Parse-CPAN-Meta.git
-version: 1.4405
+version: 1.4406
+x_authority: cpan:ADAMK
 x_contributors:
-  - 'David Golden <dagolden@cpan.org>'
   - 'Joshua ben Jore <jjore@cpan.org>'
+  - 'Neil Bowers <neil@bowers.com>'
   - 'Ricardo SIGNES <rjbs@cpan.org>'
-  - 'Steffen Müller <smueller@cpan.org>'
+  - 'Steffen MÃ¼ller <smueller@cpan.org>'
