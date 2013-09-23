@@ -68,7 +68,7 @@
    "provides" : {
       "Parse::CPAN::Meta" : {
          "file" : "lib/Parse/CPAN/Meta.pm",
-         "version" : "1.4408"
+         "version" : "1.4409"
       }
    },
    "release_status" : "stable",
@@ -83,7 +83,7 @@
          "web" : "https://github.com/Perl-Toolchain-Gang/Parse-CPAN-Meta"
       }
    },
-   "version" : "1.4408",
+   "version" : "1.4409",
    "x_authority" : "cpan:ADAMK",
    "x_contributors" : [
       "Joshua ben Jore <jjore@cpan.org>",
