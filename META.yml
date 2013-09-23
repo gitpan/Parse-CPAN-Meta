@@ -17,7 +17,7 @@ build_requires:
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300038, CPAN::Meta::Converter version 2.132140'
+generated_by: 'Dist::Zilla version 4.300039, CPAN::Meta::Converter version 2.132660'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -34,7 +34,7 @@ no_index:
 provides:
   Parse::CPAN::Meta:
     file: lib/Parse/CPAN/Meta.pm
-    version: 1.4407
+    version: 1.4408
 requires:
   CPAN::Meta::YAML: 0.008
   Carp: 0
@@ -47,10 +47,10 @@ resources:
   bugtracker: http://rt.cpan.org/Public/Dist/Display.html?Name=Parse-CPAN-Meta
   homepage: https://github.com/Perl-Toolchain-Gang/Parse-CPAN-Meta
   repository: https://github.com/Perl-Toolchain-Gang/Parse-CPAN-Meta.git
-version: 1.4407
+version: 1.4408
 x_authority: cpan:ADAMK
 x_contributors:
   - 'Joshua ben Jore <jjore@cpan.org>'
   - 'Neil Bowers <neil@bowers.com>'
-  - 'Ricardo SIGNES <rjbs@cpan.org>'
-  - 'Steffen Müller <smueller@cpan.org>'
+  - 'Ricardo Signes <rjbs@cpan.org>'
+  - 'Steffen Mueller <smueller@cpan.org>'

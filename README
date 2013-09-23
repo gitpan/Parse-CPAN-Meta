@@ -2,7 +2,7 @@ NAME
     Parse::CPAN::Meta - Parse META.yml and META.json CPAN metadata files
 
 VERSION
-    version 1.4407
+    version 1.4408
 
 SYNOPSIS
         #############################################
@@ -139,9 +139,9 @@ CONTRIBUTORS
 
     *   Neil Bowers <neil@bowers.com>
 
-    *   Ricardo SIGNES <rjbs@cpan.org>
+    *   Ricardo Signes <rjbs@cpan.org>
 
-    *   Steffen Müller <smueller@cpan.org>
+    *   Steffen Mueller <smueller@cpan.org>
 
 COPYRIGHT AND LICENSE
     This software is copyright (c) 2013 by Adam Kennedy and Contributors.

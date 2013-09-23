@@ -35,10 +35,10 @@ Neil
 Bowers
 neil
 Ricardo
-SIGNES
+Signes
 rjbs
 Steffen
-Müller
+Mueller
 smueller
 lib
 Parse
