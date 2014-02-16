@@ -2,7 +2,7 @@ NAME
     Parse::CPAN::Meta - Parse META.yml and META.json CPAN metadata files
 
 VERSION
-    version 1.4409
+    version 1.4410
 
 SYNOPSIS
         #############################################
@@ -52,8 +52,7 @@ METHODS
 
     This method will read the named file and deserialize it to a data
     structure, determining whether it should be JSON or YAML based on the
-    filename. On Perl 5.8.1 or later, the file will be read using the
-    ":utf8" IO layer.
+    filename. The file will be read using the ":utf8" IO layer.
 
   load_yaml_string
       my $metadata_structure = Parse::CPAN::Meta->load_yaml_string($yaml_string);
@@ -85,9 +84,9 @@ METHODS
     "ENVIRONMENT" for details.
 
 FUNCTIONS
-    For maintenance clarity, no functions are exported. These functions are
-    available for backwards compatibility only and are best avoided in favor
-    of "load_file".
+    For maintenance clarity, no functions are exported by default. These
+    functions are available for backwards compatibility only and are best
+    avoided in favor of "load_file".
 
   Load
       my @yaml = Parse::CPAN::Meta::Load( $string );
@@ -144,7 +143,7 @@ CONTRIBUTORS
     *   Steffen Mueller <smueller@cpan.org>
 
 COPYRIGHT AND LICENSE
-    This software is copyright (c) 2013 by Adam Kennedy and Contributors.
+    This software is copyright (c) 2014 by Adam Kennedy and Contributors.
 
     This is free software; you can redistribute it and/or modify it under
     the same terms as the Perl 5 programming language system itself.
