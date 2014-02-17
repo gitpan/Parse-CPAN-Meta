@@ -16,6 +16,7 @@ t/02_api.t
 t/03_functions.t
 t/04_export.t
 t/05_errors.t
+t/data/BadMETA.yml
 t/data/META-VR.json
 t/data/META-VR.yml
 t/lib/Parse/CPAN/Meta/Test.pm

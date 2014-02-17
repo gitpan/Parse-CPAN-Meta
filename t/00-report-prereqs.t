@@ -52,6 +52,7 @@ my $static_prereqs = do { my $x = {
                       'requires' => {
                                       'Dist::Zilla' => '5.013',
                                       'Dist::Zilla::Plugin::DualLife' => '0',
+                                      'Dist::Zilla::Plugin::Encoding' => '0',
                                       'Dist::Zilla::Plugin::MakeMaker' => '0',
                                       'Dist::Zilla::Plugin::MakeMaker::Highlander' => '0.003',
                                       'Dist::Zilla::Plugin::Prereqs' => '0',
@@ -71,9 +72,11 @@ my $static_prereqs = do { my $x = {
                       'requires' => {
                                       'CPAN::Meta::YAML' => '0.011',
                                       'Carp' => '0',
+                                      'Encode' => '0',
                                       'Exporter' => '0',
                                       'File::Spec' => '0.80',
                                       'JSON::PP' => '2.27200',
+                                      'PerlIO::encoding' => '0',
                                       'perl' => '5.008001',
                                       'strict' => '0'
                                     }
@@ -89,6 +92,7 @@ my $static_prereqs = do { my $x = {
                                    'File::Spec::Functions' => '0',
                                    'List::Util' => '0',
                                    'Test::More' => '0.47',
+                                   'lib' => '0',
                                    'vars' => '0',
                                    'version' => '0',
                                    'warnings' => '0'

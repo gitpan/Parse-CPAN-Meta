@@ -9,6 +9,7 @@ build_requires:
   File::Spec::Functions: '0'
   List::Util: '0'
   Test::More: '0.47'
+  lib: '0'
   vars: '0'
   version: '0'
   warnings: '0'
@@ -32,20 +33,22 @@ no_index:
 provides:
   Parse::CPAN::Meta:
     file: lib/Parse/CPAN/Meta.pm
-    version: '1.4410'
+    version: '1.4411'
 requires:
   CPAN::Meta::YAML: '0.011'
   Carp: '0'
+  Encode: '0'
   Exporter: '0'
   File::Spec: '0.80'
   JSON::PP: '2.27200'
+  PerlIO::encoding: '0'
   perl: '5.008001'
   strict: '0'
 resources:
   bugtracker: http://rt.cpan.org/Public/Dist/Display.html?Name=Parse-CPAN-Meta
   homepage: https://github.com/Perl-Toolchain-Gang/Parse-CPAN-Meta
   repository: https://github.com/Perl-Toolchain-Gang/Parse-CPAN-Meta.git
-version: '1.4410'
+version: '1.4411'
 x_authority: cpan:ADAMK
 x_contributors:
   - 'Joshua ben Jore <jjore@cpan.org>'
