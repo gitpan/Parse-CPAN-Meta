@@ -2,7 +2,7 @@ use 5.008001;
 use strict;
 package Parse::CPAN::Meta;
 # ABSTRACT: Parse META.yml and META.json CPAN metadata files
-our $VERSION = '1.4411'; # VERSION
+our $VERSION = '1.4412'; # VERSION
 
 use Exporter;
 use Carp 'croak';
@@ -121,7 +121,7 @@ Parse::CPAN::Meta - Parse META.yml and META.json CPAN metadata files
 
 =head1 VERSION
 
-version 1.4411
+version 1.4412
 
 =head1 SYNOPSIS
 
