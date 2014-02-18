@@ -2,7 +2,7 @@ NAME
     Parse::CPAN::Meta - Parse META.yml and META.json CPAN metadata files
 
 VERSION
-    version 1.4412
+    version 1.4413
 
 SYNOPSIS
         #############################################
@@ -134,6 +134,8 @@ AUTHORS
     *   David Golden <dagolden@cpan.org>
 
 CONTRIBUTORS
+    *   Graham Knop <haarg@haarg.org>
+
     *   Joshua ben Jore <jjore@cpan.org>
 
     *   Neil Bowers <neil@bowers.com>

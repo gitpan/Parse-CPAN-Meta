@@ -72,11 +72,10 @@ my $static_prereqs = do { my $x = {
                       'requires' => {
                                       'CPAN::Meta::YAML' => '0.011',
                                       'Carp' => '0',
-                                      'Encode' => '2.11',
+                                      'Encode' => '0',
                                       'Exporter' => '0',
                                       'File::Spec' => '0.80',
                                       'JSON::PP' => '2.27200',
-                                      'PerlIO::encoding' => '0',
                                       'perl' => '5.008001',
                                       'strict' => '0'
                                     }

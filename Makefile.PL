@@ -23,11 +23,10 @@ my %WriteMakefileArgs = (
   "PREREQ_PM" => {
     "CPAN::Meta::YAML" => "0.011",
     "Carp" => 0,
-    "Encode" => "2.11",
+    "Encode" => 0,
     "Exporter" => 0,
     "File::Spec" => "0.80",
     "JSON::PP" => "2.27200",
-    "PerlIO::encoding" => 0,
     "strict" => 0
   },
   "TEST_REQUIRES" => {
@@ -41,7 +40,7 @@ my %WriteMakefileArgs = (
     "version" => 0,
     "warnings" => 0
   },
-  "VERSION" => "1.4412",
+  "VERSION" => "1.4413",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -51,14 +50,13 @@ my %WriteMakefileArgs = (
 my %FallbackPrereqs = (
   "CPAN::Meta::YAML" => "0.011",
   "Carp" => 0,
-  "Encode" => "2.11",
+  "Encode" => 0,
   "Exporter" => 0,
   "ExtUtils::MakeMaker" => 0,
   "File::Spec" => "0.80",
   "File::Spec::Functions" => 0,
   "JSON::PP" => "2.27200",
   "List::Util" => 0,
-  "PerlIO::encoding" => 0,
   "Test::More" => "0.47",
   "lib" => 0,
   "strict" => 0,

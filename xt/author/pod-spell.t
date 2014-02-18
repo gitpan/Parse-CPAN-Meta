@@ -27,6 +27,9 @@ Golden
 dagolden
 and
 Contributors
+Graham
+Knop
+haarg
 Joshua
 ben
 Jore
