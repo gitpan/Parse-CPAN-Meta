@@ -2,7 +2,7 @@ NAME
     Parse::CPAN::Meta - Parse META.yml and META.json CPAN metadata files
 
 VERSION
-    version 1.4413
+    version 1.4414
 
 SYNOPSIS
         #############################################
@@ -68,6 +68,13 @@ METHODS
     This method deserializes the given string of JSON and the result. If the
     source was UTF-8 encoded, the string must be decoded before calling
     "load_json_string".
+
+  load_string
+      my $metadata_structure = Parse::CPAN::Meta->load_string($some_string);
+
+    If you don't know whether a string contains YAML or JSON data, this
+    method will use some heuristics and guess. If it can't tell, it assumes
+    YAML.
 
   yaml_backend
       my $backend = Parse::CPAN::Meta->yaml_backend;

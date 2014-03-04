@@ -19,6 +19,9 @@ t/05_errors.t
 t/data/BadMETA.yml
 t/data/META-VR.json
 t/data/META-VR.yml
+t/data/bareyaml.meta
+t/data/json.meta
+t/data/yaml.meta
 t/lib/Parse/CPAN/Meta/Test.pm
 xt/author/00-compile.t
 xt/author/critic.t
